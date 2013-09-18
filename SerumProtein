@@ -1,0 +1,71 @@
+
+<div class ="content" id="content">
+    <div class="content_body" id="form_div">
+        <br/>
+        <div class="page-header">
+            <h1>Serum Protein</h1>
+        </div>
+
+
+        <?php echo form_open('/LAB/ReportHome/serum_protein'); ?>
+        <table class="table table-bordered">
+            <tr>
+                <td>Sample ID</td>
+                <td><input type="text" name="SampleID" id="SampleID" value="<?php echo $SampleID ?>" readonly/></td>
+                <td>Order ID</td>
+                <td><input type="text" name="OrderID" id="OrderID" value="<?php echo $OrderID ?>" readonly/></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><input type="date" name="Date" id="Date" value="<?php echo date("Y-m-d"); ?>" readonly/></td>
+            </tr>
+
+        </table>
+        <br/>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    <label for="aL">AL </label></td>
+                <td>    
+                       <input type="text" class="form-control" id="aL" name="aL" min="0" onkeyup="validateForFloat(this.value,'tSHError')"/> mg/dl<br/>  <span id="tSHError"></span></td>
+                
+                     
+            </tr>
+            <tr>
+                <td>
+                    <label for="gL">GL</label></td>
+                <td>     
+                    <input type="text" class="form_text" id="gL" name="gL" onkeyup="validateForFloat(this.value,'tSHError1')"/> 
+                    mg/dl <br/> <span id="tSHError1"></span></td>
+            </tr>
+            
+
+            <tr>
+                <td>
+                    <label for="Remarks">Remarks</label>
+                </td>
+                <td>
+                    <input type="text" class="form_text" id="Remarks" name="Remarks" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <center> <input type="submit" class="btn btn-default " id="submit" name="Submit" value="Save"/> &nbsp;&nbsp;<input type="button" class="btn btn-default " id="printPDf" name="Print" value="Print" onclick="toPdf('<?php echo base_url('index.php/LAB/ReportHome/makePdf') ?>')"/></center>
+
+        <script>
+            function toPdf(url){
+                
+                var orderID = document.getElementById('OrderID').value;
+                var remarks = document.getElementById('Remarks').value;
+                var aL = document.getElementById('aL').value;
+                var gL = document.getElementById('gL').value;
+                
+                alert(orderID);
+                window.location = url+"?oid="+orderID+"&Remarks="+remarks+"&aL="+aL+"&gL="+gL;                
+                
+            }
+    
+        </script>
+        </form>
+    </div>
+</div>
