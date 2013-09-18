@@ -1,0 +1,29 @@
+package core.classes.lab;
+import java.util.Date;
+
+public class SerumProteinResult {
+	/*
+	 * This class corresponds to db table labTestResult_SerumProtein by FF
+	 */
+	
+	int reportID;
+	LabOrder orderID;
+	int doneBy;
+	int checkedBy;
+	Lab labID;
+	String remarks;
+	
+	Date completedDate;
+	int createUser;
+	int lastUpdateUser;
+	Date createDate;
+	Date lastUpdate;
+
+	// result values relevant to lab test
+	Double aL;
+	Double gL;
+	
+
+		
+
+}
